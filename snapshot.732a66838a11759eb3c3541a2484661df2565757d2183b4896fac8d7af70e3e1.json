@@ -827,10 +827,10 @@
         {
           "id": "product-content",
           "workstream": "Product and content pack",
-          "currentState": "Not started",
-          "evidence": "No product mock-up, listing, or published content exists",
-          "nextDecision": "Create drafts only after design and market gates",
-          "status": "not_started"
+          "currentState": "Visual workflow captured, pending review",
+          "evidence": "User supplied an original source image, a 2D rendition preview, and a journal mock-up. The exact Met record and editable vector master are TBC.",
+          "nextDecision": "Verify the Met object record, retain an editable master, and review the original design before any production or listing work",
+          "status": "blocked_by_review"
         },
         {
           "id": "learning-loop",
@@ -872,6 +872,58 @@
         ],
         "limitations": [
           "No market-size, demand, price, listing, sales, or customer-feedback data is present."
+        ]
+      }
+    },
+    "transformation_workflow": {
+      "rows": [
+        {
+          "id": "met-source-reference",
+          "stage": "1. Source reference",
+          "artifact": "Original Met download",
+          "artifactType": "Raster source reference",
+          "localAsset": "met-source-original.png",
+          "status": "source link TBC",
+          "evidence": "User states this is the original downloaded from The Met. The specific object ID, official URL, download date, and rights evidence were not supplied with the image.",
+          "nextGate": "Attach the official Met object record and item-level rights evidence before a derivative is reviewed."
+        },
+        {
+          "id": "two-d-rendition-preview",
+          "stage": "2. Design rendition",
+          "artifact": "2D pattern rendition",
+          "artifactType": "Raster preview supplied as JPG",
+          "localAsset": "2d-rendition-preview.jpg",
+          "status": "editable vector master TBC",
+          "evidence": "The supplied image shows a stylised two-dimensional rendition. It is not itself evidence of an editable SVG, AI, or other vector master.",
+          "nextGate": "Store the editable master, document transformation choices, and complete source and cultural-context review."
+        },
+        {
+          "id": "journal-mockup-preview",
+          "stage": "3. Product mock-up",
+          "artifact": "Journal cover mock-up",
+          "artifactType": "Visual mock-up only",
+          "localAsset": "journal-mockup-preview.jpg",
+          "status": "not production ready",
+          "evidence": "The supplied image shows the rendition applied to a journal mock-up. It is not a print proof, product sample, Etsy listing, or customer-demand signal.",
+          "nextGate": "Check print scale and colour, product fit, production partner constraints, and owner approval before a listing draft."
+        }
+      ],
+      "source": {
+        "label": "Three user-supplied visual artifacts received 2026-09-24",
+        "sourceUrls": [],
+        "limitations": [
+          "The exact Met source record and rights evidence are TBC.",
+          "The supplied 2D rendition is a JPG preview; no editable vector master was supplied.",
+          "The journal image is a mock-up only and does not establish production quality, commercial approval, or market demand."
+        ],
+        "metricDefinitions": [
+          {
+            "label": "Transformation workflow stage",
+            "definition": "One user-supplied visual artifact in the progression from a historical source reference to a design rendition and a product mock-up.",
+            "componentIds": [
+              "transformation-workflow"
+            ]
+          }
         ]
       }
     }
